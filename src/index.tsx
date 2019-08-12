@@ -5,29 +5,12 @@ interface IProps{
     color:string;
 }
 
-class App extends React.Component<IProps>{
-    state = {counter: 0}
-    
-    increment=()=>{
-        this.setState({
-            counter: this.state.counter +1
-        });
-    }
-    decrement=()=>{
-        this.setState({
-            counter: this.state.counter -1
-        });
-    } 
-    render(){
-        return (
-            <Fragment>
-                <h1>{this.state.counter}</h1>
-                <button onClick={this.increment}> increment </button>
-                <button onClick={this.decrement}> decrement </button>
-                <h1>{this.props.color}</h1>
-            </Fragment>
-        )
-    }
+const App = (props: IProps):JSX.Element=>{
+    return(
+        <Fragment>
+            <h1>{props.color}</h1>
+        </Fragment>
+    )
 }
 
 ReactDom.render(<App color="red" />, document.querySelector('#root'));
