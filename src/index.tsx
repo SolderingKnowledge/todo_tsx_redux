@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDom from 'react-dom';
 
-interface IFace{
+interface IProps{
     color:string;
 }
-class App extends React.Component<IFace>{
+interface IState{
+    counter:number;
+}
+class App extends React.Component<IProps, IState>{
+    constructor(props: IProps){
+        super(props);
+        this.state = {counter: 0}
+    }
+    increment=()=>{
+        this.setState({
+            counter: this.state.counter +1
+        });
+    }
+    decrement=()=>{
+        this.setState({
+            counter: this.state.counter -1
+        });
+    } 
     render(){
         return (
-            <h1>{this.props.color}</h1>
+            <Fragment>
+                <h1>{this.state.counter}</h1>
+                <button onClick={this.increment}> increment </button>
+                <button onClick={this.decrement}> decrement </button>
+                <h1>{this.props.color}</h1>
+            </Fragment>
         )
     }
 }
