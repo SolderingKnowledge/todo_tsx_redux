@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
+// import React from 'react';
 import ReactDom from 'react-dom';
+import {createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import App from './components/App';
 
-interface IProps{
-    color:string;
-}
+const store = createStore(reducers, applyMiddleware(thunk));
 
-const App = (props: IProps):JSX.Element=>{
-    return(
-        <Fragment>
-            <h1>{props.color}</h1>
-        </Fragment>
-    )
-}
+ReactDom.render(
+    <Provider store = {store}>
+        <App />
+    </Provider>,
+    document.querySelector('#root')
 
-ReactDom.render(<App color="red" />, document.querySelector('#root'));
+);
