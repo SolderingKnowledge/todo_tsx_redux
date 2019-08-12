@@ -4,14 +4,10 @@ import ReactDom from 'react-dom';
 interface IProps{
     color:string;
 }
-interface IState{
-    counter:number;
-}
-class App extends React.Component<IProps, IState>{
-    constructor(props: IProps){
-        super(props);
-        this.state = {counter: 0}
-    }
+
+class App extends React.Component<IProps>{
+    state = {counter: 0}
+    
     increment=()=>{
         this.setState({
             counter: this.state.counter +1
